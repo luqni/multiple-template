@@ -1,0 +1,110 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" type="text/css" href="tes.css">
+ <!-- Stylesheets -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,300italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../assets/css/docs.theme.min.css">
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="../assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/owlcarousel/assets/owl.theme.default.min.css">
+
+
+   <div class="row">  
+      <div class="col-md-8 banner-sec">
+            <img class="d-block img-fluid" src="https://htmlstream.com/preview/space-v1.1/assets/img/1920x1080/img4.jpg" alt="First slide">
+   </div>
+   <div class="col-md-4 login-sec">
+          <h2 class="text-center">Login Now</h2>
+          <form class="login-form">
+  <div class="form-group">
+    <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+    <input type="text" class="form-control" placeholder="">
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+    <input type="password" class="form-control" placeholder="">
+  </div>
+  
+  
+    <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      <small>Remember Me</small>
+    </label>
+    <button type="submit" class="btn btn-login float-right">Submit</button>
+  </div>
+  
+</form>
+<div class="copy-text">Created  <i class="fa fa-heart"></i> by <a href="https://github.com/luqni">STT Terpadu Nurul Fikris</a></div>
+      </div>
+
+<div id="slider">
+  <div id="slide-holder">
+      <div class="slide"><img src="bg1.jpg" alt="" /></div>
+      <div class="slide"><img src="bg2.jpg" alt="" /></div>
+      <div class="slide"><img src="bg3.jpg" alt="" /></div>
+
+  </div>
+</div>
+
+<div class="row bhoechie-tab-container">  
+   <div class="col-md-4 login-sec bhoechie-tab-menu">
+      <div class="list-group">
+                <a href="#" class="list-group-item active text-center">
+                 <h4 class="fa fa-facebook"></h4><br/><p>Facebook</p>
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="fa fa-youtube-play"></h4><br/><p>Youtube</p>
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="fa fa-twitter"></h4><br/><p>Twitter</p>
+                </a>
+                
+              </div>
+  
+    </div>
+    <div class="col-md-8 banner-sec bhoechie-tab">
+            <div class="bhoechie-tab-content active">
+                    <center>
+                      <h1 class="fa fa-facebook" style="font-size:14em;color:#3B5998"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Em Breve</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Janela do Facebook</h3>
+                    </center>
+                </div>
+
+                <div class="bhoechie-tab-content">
+                    <center>
+                      <h1 class="fa fa-youtube-play" style="font-size:12em;color:#e52d27"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Em Breve</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Canal do Youtube Aqui</h3>
+                    </center>
+                </div>
+  
+                <div class="bhoechie-tab-content">
+                    <center>
+                      <h1 class="fa fa-twitter" style="font-size:12em;color:#00aced"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Em Breve</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Postagens do Twitter</h3>
+                    </center>
+                </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  /* Esse widget não foi criado por mim, apenas adaptado ... ele trabalha com Jquery, e Bootstrap, importe as bibliotecas do mesmo e faça bom uso \o */
+
+$(document).ready(function() {
+    $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+    });
+});
+</script>
