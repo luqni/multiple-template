@@ -102,80 +102,47 @@ body {
   background: #eee;
 }
 /*tab*/
-div.bhoechie-tab-container{
-  z-index: 10;
-  background-color: #ffffff;
-  padding: 0 !important;
+.facts__list {
+  margin: 0;
+  float: left;
+  width: 30%;
+  padding: 0;
+  list-style-type: none;
+}
+.facts__fact-title {
+  padding: 10px;
   border-radius: 4px;
-  -moz-border-radius: 4px;
-  border:1px solid #ddd;
-  margin-top: 5px;
-  margin-left: 5px;
-  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-  box-shadow: 0 6px 12px rgba(0,0,0,.175);
-  -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-  background-clip: padding-box;
-  opacity: 0.97;
-  filter: alpha(opacity=97);
-  height: 100%;
-  width: 80%;
+  border: 1px solid transparent;
+  text-align-last: left;
+  font-size: 20px;
+  font-family: 'RobotoCondensed-Regular';
+  transirion: .4s;
+  cursor: pointer;  
 }
-div.bhoechie-tab-menu{
-  padding-right: 0;
-  padding-left: 0;
-  padding-bottom: 0;
+.facts__fact-title_active {
+  position: relative;
+  border-color: #00c9ff;
 }
-div.bhoechie-tab-menu div.list-group{
-  margin-bottom: 0;
-}
-div.bhoechie-tab-menu div.list-group>a{
-  margin-bottom: 0;
-}
-div.bhoechie-tab-menu div.list-group>a .glyphicon,
-div.bhoechie-tab-menu div.list-group>a .fa {
-  color: #099AE1; /* link roxo  e agora tá azul*/
-}
-div.bhoechie-tab-menu div.list-group>a:first-child{
-  border-top-right-radius: 0;
-  -moz-border-top-right-radius: 0;
-}
-div.bhoechie-tab-menu div.list-group>a:last-child{
-  border-bottom-right-radius: 0;
-  -moz-border-bottom-right-radius: 0;
-}
-div.bhoechie-tab-menu div.list-group>a.active,
-div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
-div.bhoechie-tab-menu div.list-group>a.active .fa{
-  background-color: #6C6C6C;
-  background-image: #6C6C6C;
-  color: #FFFFFF;
-}
-div.bhoechie-tab-menu div.list-group>a.active:after{
+.facts__fact-title_active:after {
   content: '';
   position: absolute;
-  left: 100%;
+  right: -2px;
   top: 50%;
-  margin-top: -13px;
-  border-left: 0;
-  border-bottom: 13px solid transparent;
-  border-top: 13px solid transparent;
-  border-left: 10px solid #6C6C6C;
+  transform: rotate(45deg) translateY(-50%) ;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-top: 1px solid #00c9ff;
+  border-right: 1px solid #00c9ff;
+    
+  
 }
-
-div.bhoechie-tab-content{
-  background-color: #ffffff;
-  /* border: 1px solid #eeeeee; */
-  padding-left: 20px;
-  padding-top: 10px;
+.facts__fact-text {
+  display: none;  
 }
-
-div.bhoechie-tab div.bhoechie-tab-content:not(.active){
-  display: none;
-}
-
-@media (max-width: 470px){
- .list-group p{
-   display:none;
- }
- 
+.facts__fact-container {
+  width: 65%;
+  float: right;
+  font-size: 20px;
+  font-family: 'RobotoCondensed-Light';
 }
