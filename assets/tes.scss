@@ -1,0 +1,237 @@
+$menu-width: 350px;
+$scene-width: 1000px;
+$scene-height: 400px;
+
+$sections: strawberry, banana, apple, orange;
+
+$colors: (
+  strawberry: #D64541,
+  banana: #F5D76E,
+  apple: #00B16A,
+  orange: #F27935,
+  white: #fff,
+  gray: #eee
+);
+
+$pictograms: (
+  strawberry: url('https://d30y9cdsu7xlg0.cloudfront.net/png/83067-200.png'),
+  banana: url('https://d30y9cdsu7xlg0.cloudfront.net/png/53209-200.png'),
+  apple: url('https://d30y9cdsu7xlg0.cloudfront.net/png/14333-200.png'),
+  orange: url('https://d30y9cdsu7xlg0.cloudfront.net/png/9636-200.png')
+);
+
+@function get-color($color-name) {
+  @if map-has-key($colors, $color-name) {
+    @return map-get($colors, $color-name);
+  }
+ 
+  @else {
+    @warn "This color key doesn't exist."
+  }
+}
+
+@function get-picto-url($picto-name) {
+  @if map-has-key($pictograms, $picto-name) {
+    @return map-get($pictograms, $picto-name);
+  }
+ 
+  @else {
+    @warn "This pictogram key doesn't exist."
+  }
+}
+
+@keyframes slidein {
+  0% {
+    top: -$scene-height;
+    opacity: 0;
+  }
+  
+  100%{
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+@keyframes slideout {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  
+  100% {
+    top: -$scene-height;
+    opacity: 0;
+  }
+}
+
+body{
+  background: get-color(gray);
+  font-family: "Tahoma";
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  #scene {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    
+    width: $scene-width;
+    height: $scene-height;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: get-color(white);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12),
+                0 1px 2px rgba(0,0,0,0.24);
+    overflow: hidden;
+      
+    #left-zone {
+      background: get-color(white);
+      height: 75%;
+      flex-grow: 0;
+      display: flex;
+      width: $menu-width;
+      align-items: center;
+      justify-content: left;
+      
+      .list{
+        display: flex;
+        list-style: none;
+        
+        align-content: stretch;
+        flex-direction: column;
+        flex-grow: 1;
+        
+        margin: 0;
+        padding: 0;        
+        
+        li.item {
+          
+           input[type="radio"] {
+             
+            display: none;
+            
+            & ~ label {
+              display: block;
+              opacity: 0.5;
+              height: 50px;
+              text-align: center;
+              line-height: 50px;
+              
+              &:first-letter {
+                text-transform: uppercase;
+              }
+                          
+              &:hover {
+                opacity: 0.75;
+                cursor: pointer;
+              }
+              
+              @each $item in $sections{
+                &.label_#{$item} {
+ 
+                  &:before {
+                    content: " ";
+                    display: block;
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    margin-left: 15px;
+                    background-image: get-picto-url($item);
+                    background-position: center;
+                    background-size: 75% 75%;
+                    background-repeat: no-repeat;
+                  }
+                }
+              }              
+            }
+              
+            & ~ .content {
+              position: absolute;
+              left: $menu-width;
+              top: -$scene-height;
+              width: $scene-width - $menu-width;
+              height: $scene-height;
+              
+              animation-duration: 0.75s;
+              animation-name: slideout;
+              animation-timing-function: ease-out;
+              
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              @each $item in $sections{
+                &.content_#{$item} {
+                    
+                  .picto {
+                    height: 100px;
+                    width: 100px;
+                    background-image: get-picto-url($item);
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                  }
+                  
+                  h1{
+                    color: get-color($item);
+                  }
+                }
+              }
+              
+              h1 {
+                &:first-letter {
+                  text-transform: uppercase;
+                }
+              }
+              p {
+                max-width: 50%;
+                text-align: center;
+              }
+            }
+            
+            &:checked{
+              & ~ label {
+                opacity: 1;
+                animation: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+                
+                @each $item in $sections{
+                  &.label_#{$item} {
+                    color: get-color($item);
+                    border-right: solid 4px get-color($item);
+                  }
+                }
+              }
+
+              & ~ .content {
+                animation-duration: 0.75s;
+                animation-name: slidein;
+                animation-fill-mode: forwards;
+                animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    #middle-border {
+      background-color: get-color(gray);
+      height: 75%;
+      flex-grow: 1;
+      max-width: 2px;
+      z-index: 0;
+    }
+    
+    #right-zone {
+      background: get-color(white);
+      height: 100%;
+      flex-grow: 3;
+    }
+  }
+}
